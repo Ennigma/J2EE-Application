@@ -13,15 +13,33 @@
 
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<!-- We can insert title for any flow we run by referencing this name="title" -->
 		<title><ui:insert name="title" /></title>
+		<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/style.css" />
+		<link rel="shortcut icon" href="${request.contextPath}/resources/css/images/favicon.ico" />
 	</h:head>
 
 	<h:body>
-		<h1>
-			Webflow and Facelets +
-			<ui:insert name="body" />
-		</h1>
+
+		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" header="Processing..."	draggable="true" closable="true">
+			<p:graphicImage value="/css/images/ajaxloadingbar.gif" />
+		</p:dialog>
+
+		<div id="container">
+			<div id="header">
+				<h1>
+					<ui:insert name="header" />
+				</h1>
+			</div>
+			<div id="line" />
+			<div id="content">
+				<ui:insert name="content" />
+			</div>
+			<div id="footer">
+				<ui:insert name="footer" />
+			</div>
+		</div>
 	</h:body>
 
 </f:view>
